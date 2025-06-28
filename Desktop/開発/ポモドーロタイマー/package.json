@@ -1,0 +1,13 @@
+{
+  "name": "pomodoro-timer",
+  "version": "1.0.0",
+  "description": "ポモドーロタイマー",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo \"No build needed for static site\"",
+    "deploy": "netlify deploy"
+  },
+  "devDependencies": {
+    "netlify-cli": "^15.0.0"
+  }
+}
