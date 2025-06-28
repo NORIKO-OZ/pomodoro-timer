@@ -32,6 +32,11 @@ class PomodoroTimer {
         if (this.isRunning) return;
         
         this.isRunning = true;
+        this.isWorking = true;
+        this.workTime = parseInt(this.workTimeInput.value) * 60 || 25 * 60;
+        this.breakTime = parseInt(this.breakTimeInput.value) * 60 || 5 * 60;
+        this.statusText.textContent = '作業時間';
+        this.updateDisplay(this.workTime);
         this.interval = setInterval(() => this.tick(), 1000);
     }
 
@@ -45,8 +50,10 @@ class PomodoroTimer {
     reset() {
         this.stop();
         this.isWorking = true;
-        this.updateDisplay(this.workTime);
+        this.workTime = parseInt(this.workTimeInput.value) * 60 || 25 * 60;
+        this.breakTime = parseInt(this.breakTimeInput.value) * 60 || 5 * 60;
         this.statusText.textContent = '作業時間';
+        this.updateDisplay(this.workTime);
     }
 
     updateWorkTime() {
@@ -67,7 +74,7 @@ class PomodoroTimer {
             this.workTime--;
             if (this.workTime <= 0) {
                 this.isWorking = false;
-                this.workTime = 25 * 60;
+                this.workTime = parseInt(this.workTimeInput.value) * 60 || 25 * 60;
                 this.statusText.textContent = '休憩時間';
                 this.updateDisplay(this.breakTime);
             }
@@ -75,7 +82,7 @@ class PomodoroTimer {
             this.breakTime--;
             if (this.breakTime <= 0) {
                 this.isWorking = true;
-                this.breakTime = 5 * 60;
+                this.breakTime = parseInt(this.breakTimeInput.value) * 60 || 5 * 60;
                 this.statusText.textContent = '作業時間';
                 this.updateDisplay(this.workTime);
             }
